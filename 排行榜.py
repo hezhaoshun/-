@@ -1,12 +1,6 @@
-# -*- coding: utf-8 -*-
-"""
-Spyder Editor
-
-This is a temporary script file.
-"""
 import pandas as pd
 x=pd.read_excel(r"C:\Users\Administrator\Desktop\1 咪视界内容排行走势_日_表1.xlsx")
-
+#生成一个包含指定条件列的表格
 x1=x[x['渠道省份']=='剔重汇总'].loc[:,['统计日期',
          '分类',
          '内容名称',
@@ -28,8 +22,10 @@ cc=['电影',
     '纪实',
     '综艺',
     '体育']
+#生成一个空DataFrame
 x2=pd.DataFrame(columns=x1.columns)
 for c in cc:
     x2=x2.append(x1[x1['分类']==c].sort_values('播放次数',ascending=False)[:50])
 x2=x2.append(x1[x1['分类']=='剔重汇总'].sort_values('播放次数',ascending=False)[:100])
+#导出到桌面，去除索引列
 x2.to_excel(r"C:\Users\Administrator\Desktop\排行榜.xlsx",index=False)
