@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Spyder Editor
-
-This is a temporary script file.
-"""
 import pandas as pd
 from openpyxl import Workbook
 #生成一个播放次数排名的列表
