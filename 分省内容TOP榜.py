@@ -1,6 +1,6 @@
 import pandas as pd
 from openpyxl import Workbook
-#生成一个播放次数排名的列表
+#生成一个分省播放次数排名的列表
 x=pd.read_excel(r"C:\Users\Administrator\Desktop\1 咪视界内容排行走势_日_表1.xlsx")
 x1=x[x['分类']=='剔重汇总']
 means=x1['播放次数'].groupby(x1['渠道省份']).mean()
