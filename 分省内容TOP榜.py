@@ -1,11 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Spyder Editor
-
-This is a temporary script file.
-"""
 import pandas as pd
-from openpyxl import Workbook
 #生成一个播放次数排名的列表
 x=pd.read_excel(r"C:\Users\Administrator\Desktop\1 咪视界内容排行走势_日_表1.xlsx")
 x1=x[x['分类']=='剔重汇总']
@@ -13,7 +6,7 @@ means=x1['播放次数'].groupby(x1['渠道省份']).sum().reset_index()
 #筛选后再排名
 mean1=means[(means['渠道省份']!='剔重汇总')&(means['渠道省份']!='未知')&(means['渠道省份']!='全国')]
 mean2=mean1.sort_values('播放次数',ascending=False)[:10].reset_index(drop=True)
-#生产一个初始dataframe
+#生产一个初始dataframe用来append
 d0=pd.DataFrame(columns=['省份排名',
                             '省份',
                             '日VV',
@@ -27,6 +20,7 @@ d0=pd.DataFrame(columns=['省份排名',
                             '人均播放次数',
                             '人均播放时长(小时)',
                             '次均播放时长（小时）'])
+#生成一个固定行数的dataframe用来添加数据
 data0=pd.DataFrame(index=range(10),columns=d0.columns)
 
 for index,row in mean2.iterrows():
