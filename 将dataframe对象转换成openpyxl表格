@@ -1,0 +1,4 @@
+rows = dataframe_to_rows(x1)
+for r_idx, row in enumerate(rows, 1):
+    for c_idx, value in enumerate(row, 1):
+         ws.cell(row=r_idx, column=c_idx, value=value)
