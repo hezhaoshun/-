@@ -41,6 +41,6 @@ for index,row in mean2.iterrows():
     d0=d0.append(data0)
 from datetime import datetime,timedelta
 now=datetime.today()
-yesterday=now++timedelta(-1)
+yesterday=now+timedelta(-1)
 m='{:0>2d}'.format(yesterday.month)+ '{:0>2d}'.format(yesterday.day)
 d0.to_excel(r"C:\Users\Administrator\Desktop\{}分省内容TOP榜.xlsx".format(m),index=False)
