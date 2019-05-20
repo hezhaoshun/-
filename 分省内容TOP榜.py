@@ -39,4 +39,8 @@ for index,row in mean2.iterrows():
     data0[ '人均播放时长(小时)']=pd.DataFrame(data=x1[x1['渠道省份']==row[0]].sort_values('播放次数',ascending=False)[:10],columns=['人均播放时长(小时)']).values
     data0[ '次均播放时长（小时）']=pd.DataFrame(data=x1[x1['渠道省份']==row[0]].sort_values('播放次数',ascending=False)[:10],columns=['次均播放时长（小时）']).values
     d0=d0.append(data0)
-d0.to_excel(r"C:\Users\Administrator\Desktop\分省内容TOP榜.xlsx",index=False)
+from datetime import datetime,timedelta
+now=datetime.today()
+yesterday=now++timedelta(-1)
+m='{:0>2d}'.format(yesterday.month)+ '{:0>2d}'.format(yesterday.day)
+d0.to_excel(r"C:\Users\Administrator\Desktop\{}分省内容TOP榜.xlsx".format(m),index=False)
